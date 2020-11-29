@@ -21,3 +21,31 @@ const frequencyCounter = (arr1, arr2) => {
 const result = frequencyCounter([1, 2, 3], [2, 4, 9]);
 console.log(result);
 
+// Second solution using objects. Reduced time complexity of O(n)
+const frequencyCounterOptimized = (arr1, arr2) => {
+    const frequencyCounter1 = {};
+    const frequencyCounter2 = {};
+
+    for (let val of arr1) {
+        frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+    }
+
+    for (let val of arr2) {
+        frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+    }
+
+    console.log(frequencyCounter1);
+    console.log(frequencyCounter2);
+
+    for (let key in frequencyCounter1) {
+        if (!((key*key) in frequencyCounter2)) {
+            return false;
+        }
+        if (frequencyCounter2[key*key] != frequencyCounter1[key]) {
+            return false;
+        } 
+    } return true;
+}
+
+const resultOptimized = frequencyCounterOptimized([1, 2, 3, 5], [1, 9, 4, 11]);
+console.log(resultOptimized);
