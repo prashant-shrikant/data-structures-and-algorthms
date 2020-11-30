@@ -33,5 +33,5 @@ const anagram = (str1, str2) => {
     return true;
 }
 
-const result = anagram('Prashant', 'trashnP');
+const result = anagram('Prashant', 'trashnp');
 console.log(result)
