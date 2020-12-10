@@ -1,10 +1,11 @@
 const isSubsequence = (str1, str2) => {
-    let first = 0;
-    let next = 0;
-
-    for (let i = 0; i < str1.length; i++) {
-        if ( str[i] !== str2[next]) {
-            
-        }
+    let i = 0;
+    let j = 0;
+    if (!str1) return true;
+    while (j < str2.length) {
+      if (str2[j] === str1[i]) i++;
+      if (i === str1.length) return true;
+      j++;
     }
+    return false;
 }
