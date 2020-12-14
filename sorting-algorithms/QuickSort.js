@@ -12,6 +12,13 @@ const pivot = (arr, start=0, end=arr.length- 1) => {
     return swapIndex;
 }
 
+const swap = (arr, first, second) => {
+    let temp = arr[first];
+    arr[first] = arr[second];
+    arr[second] = temp;
+    return arr;
+}
+
 
 
 const result = quickSort([4, 8, 2, 1, 5, 7, 5, 6, 3]);
