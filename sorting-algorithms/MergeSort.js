@@ -22,5 +22,18 @@ const merge = (arr1, arr2) => {
     return result;
 }
 
-const result = merge([1, 4, 7], [2, 5, 9, 11, 12]);
+const mergeSort = arr => {
+    if (arr.length == 1) {
+        return arr;
+    } 
+    let arrLength = arr.length;
+    let midPoint = Math.floor(arrLength / 2);
+
+    let leftArr = mergeSort(arr.slice(0, midPoint));
+    let rightArr = mergeSort(arr.slice(midPoint));
+
+    return merge(leftArr, rightArr);
+}
+
+const result = mergeSort([9, 1, 4, 2, 7, 8, 10]);
 console.log(result);
