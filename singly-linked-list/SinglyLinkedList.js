@@ -69,7 +69,27 @@ class SinglyLinkedList {
         this.length++;
         return this;
     }
-    
+    get(index) {
+        let nodeVal = undefined;
+        if (index < -1 || index > this.length) {
+            return null;
+        } else {
+            let current = this.head;
+            let counter = 0;
+            while (counter != index) {
+                current = current.next;
+                nodeVal = current.val;
+                counter++;
+            } 
+        } return nodeVal;
+    }
+    set(index, val) {
+        let foundNode = this.get(index);
+        if (foundNode) {
+            foundNode.val = val;
+            return true;
+        } return false;
+    }
     traverse() {
         console.log(`--------------------`)
         let current = this.head;
