@@ -57,6 +57,7 @@ class SinglyLinkedList {
             return current;
         }
     }
+    
     traverse() {
         console.log(`--------------------`)
         let current = this.head;
