@@ -43,7 +43,22 @@ class SinglyLinkedList {
             return current;
         }
     }
+    shift() {
+        if(!this.head) {
+            return undefined;
+        } else {
+            let current = this.head;
+            this.head = current.next;
+            this.length--;
+            if (this.length === 0) {
+                this.head = null;
+                this.tail = null;
+            }
+            return current;
+        }
+    }
     traverse() {
+        console.log(`--------------------`)
         let current = this.head;
         while (current) {
             console.log(current.val);
@@ -60,3 +75,9 @@ list.push("shweta")
 list.traverse();
 list.pop();
 list.traverse();
+list.shift();
+list.traverse();
+list.unshift("mac");
+list.traverse();
+const nodeVal = list.get(2)
+console.log(nodeVal);
