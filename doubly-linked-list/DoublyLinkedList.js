@@ -46,18 +46,60 @@ class DoubleLinkedList {
             this.head = null;
             this.tail = null;
         } else {
-            const nextNode = this.head.next;
+            const nextNode = oldHead .next;
             nextNode.previous = null;
-            this.head.next = null;
+            oldHead.next = null;
             this.head = nextNode;
         }
         this.length--;
         return oldHead;
+    }
+    unshift(val) {
+        const newNode = new Node(val);
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head.previous = newNode;
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
+    }
+    get(index) {
+        if (index < 0 ||  index >= this.length) { return undefined; }
+        const midPoint = Math.floor(this.length/2);
+        let current, count;
+        if (index < midPoint) {
+            count = 0;
+            current = this.head;
+            while(count != index) {
+                current = current.next;
+                count++;
+            }
+        } else {
+            count = this.length--;
+            current = this.tail;
+            while(count != index) {
+                current = current.previous;
+                count--;
+            }
+        } 
+        return current;
+    }
+    set(index, val) {
+        const foundNode = this.get(index);
+        if(foundNode) {
+            foundNode.val = val;
+            return true;
+        }
+        return false;
     }
 }
 
 const list = new DoubleLinkedList();
 list.push('prashant')
 list.push('shikant')
-console.log(list.shift());
-console.log(list)
+list.set(0, 'usha');
+console.log(list);
