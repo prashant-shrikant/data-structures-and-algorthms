@@ -26,7 +26,7 @@ class DoubleLinkedList {
     } 
     pop() {
         if (!this.tail) { return undefined; }
-        const temp = this.tail;
+        const oldTail = this.tail;
         if (this.length == 1) {
             this.head = null;
             this.tail = null;
@@ -37,12 +37,27 @@ class DoubleLinkedList {
             this.tail = previous;
         }
         this.length--;
-        return temp;
+        return oldTail;
+    }
+    shift() {
+        if (!this.head) { return undefinded; }
+        const oldHead = this.head;
+        if (this.length == 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            const nextNode = this.head.next;
+            nextNode.previous = null;
+            this.head.next = null;
+            this.head = nextNode;
+        }
+        this.length--;
+        return oldHead;
     }
 }
 
 const list = new DoubleLinkedList();
 list.push('prashant')
 list.push('shikant')
-list.pop();
+console.log(list.shift());
 console.log(list)
