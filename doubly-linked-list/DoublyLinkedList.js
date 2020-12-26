@@ -111,7 +111,23 @@ class DoubleLinkedList {
         afterNode.previous = newNode;
         this.length++;
         return true;
+    }
+    remove(index) {
+        if (index < 0 || index >= this.length) return false;
+        if (index === 0) { return this.shift(); }
+        if (index === this.length -1 ) { return this.pop(); }
 
+        const beforeNode = this.get(index - 1);
+        const afterNode = beforeNode.next;
+        beforeNode.next = afterNode;
+        afterNode.previous = beforeNode;
+        this.length--;
+
+        const removedNode = this.get(index);
+        removedNode.next = null;
+        removedNode.previous = null;
+
+        return removedNode;
     }
 }
 
