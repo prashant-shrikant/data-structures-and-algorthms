@@ -33,7 +33,7 @@ class DoubleLinkedList {
         } else {
             const previous = this.tail.previous;
             previous.next = null;
-            this.tail.previous = null;
+            oldTail.previous = null;
             this.tail = previous;
         }
         this.length--;
@@ -68,7 +68,9 @@ class DoubleLinkedList {
         return this;
     }
     get(index) {
-        if (index < 0 ||  index >= this.length) { return undefined; }
+        if (index < 0 ||  index >= this.length) {
+             return undefined; 
+        }
         const midPoint = Math.floor(this.length/2);
         let current, count;
         if (index < midPoint) {
