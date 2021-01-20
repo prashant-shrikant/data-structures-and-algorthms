@@ -32,7 +32,7 @@ class MaxBinaryHeap {
         while (true) {
             let childOneIndex = (parentIndex * 2) + 1;
             let childTwoIndex = (parentIndex * 2) + 2;
-            let largerChildIndex = this.findandReturnLargerChild(childOneIndex, childTwoIndex);
+            let largerChildIndex = this.findLargerChildValueAndReturnIndex(childOneIndex, childTwoIndex);
             if (this.values[largerChildIndex] > this.values[parentIndex]) {
                 [this.values[parentIndex], this.values[largerChildIndex]] = [this.values[largerChildIndex], this.values[parentIndex]];
                 parentIndex = largerChildIndex;
@@ -42,7 +42,7 @@ class MaxBinaryHeap {
         }
     }
 
-    findandReturnLargerChild(childOneIndex, childTwoIndex) {
+    findLargerChildValueAndReturnIndex(childOneIndex, childTwoIndex) {
         if (this.values[childOneIndex] > this.values[childTwoIndex]) {
             return childOneIndex;
         }
